@@ -10,12 +10,20 @@ public class Simulacao {
 
     public static void main(String args[]) {
         
-        ProfHorista profhorista = new ProfHorista("Carlos", 001, 12, 1200);
+        ProfHorista profhorista = new ProfHorista("", 001, -1, 2097);
+        //profhorista.setCargaHoraria(-1);
+        ProfHorista profhorista02 = new ProfHorista("Icaro", 002, 28, 1200);
         ProfDE profde = new ProfDE("Fedegosa", 002, 13);
         
-        Cadastro cadastrar = new Cadastro(100);
+        Cadastro cadastrar = new Cadastro(1);
         cadastrar.insere(profhorista, 0);
-        cadastrar.consulta("Fedegosa");
+        //cadastrar.insere(profhorista02, 1);
+        cadastrar.consulta("");
+        //cadastrar.remove("Icaro");
+        //cadastrar.consulta("Icaro");
+        //cadastrar.get(1);
+        
+        //System.out.println(profhorista.getNome()); 
         
         // Cenário 01: A ideia é criar e utilizar exceções
         // Crie alguns objetos ProfDE, alguns objetos ProfHorista e um objeto Cadastro

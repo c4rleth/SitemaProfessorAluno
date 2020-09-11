@@ -5,11 +5,24 @@ public class ProfHorista extends Professor {
     
     public ProfHorista(String n, int m, int c, double s) {
         super(n,m,c);
+        
+        try {
+            this.nome = n;
+            this.matricula = m;
+            this.cargaHoraria = c;
+            this.salarioHora = s; 
+        } catch (IllegalArgumentException e) {
+            System.out.println("Valor inválido: " + e);
+        }
         // Exceção:  Valores inválidos no construtor ProfHorista
     }
 
     public void setSalarioHora(double s) {
         // Exceção:  Argumento negativo em setSalarioHora
+        
+        if( s < 0 ) {
+         throw new IllegalArgumentException(Double.toString(s));
+     }
     }
     
     public double getSalarioHora() {

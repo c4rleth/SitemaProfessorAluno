@@ -17,6 +17,7 @@ public abstract class Professor implements Serializable{
         } catch (IllegalArgumentException e) {
             System.out.println("Valor inválido: " + e);
         }
+
     }
     
     public void setNome(String n) {

@@ -22,8 +22,7 @@ public class Cadastro {
         }else{
             throw new IllegalArgumentException(Integer.toString(capacidade));
         }
-            
-        
+                 
         // crie o objeto ArrayList considerando que se o usuário
         // passou um valor negativo deve ser gerada uma exceção
         // IllegalArgumentException
@@ -69,25 +68,14 @@ public class Cadastro {
     // está no array. Se encontrar, retorne a referência do objeto. 
     // Caso contrário, retorne false
     public Professor consulta(String nome) {
-        
-        //String firstName = listadeprofessor.get(posicao).getNome();
-        //System.out.println(listadeprofessor.get(0).getNome());        
+               
         for(Professor p : listadeprofessor) {
             if(p.getNome().equals(nome)) {
                 System.out.println(p);
                 return p;
             }
         }
-        
-        /*
-        if(firstName.equals(nome)){
-            System.out.println(firstName);
-            return listadeprofessor;
-        }else{
-            System.out.println("Deu merda");
-            return null;
-        }
-        */
+
         return null;
     }    
     
@@ -114,30 +102,34 @@ public class Cadastro {
 
         ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
         objOutput.writeObject(listadeprofessor);
+        objOutput.flush();
         objOutput.close();
 
       } catch(IOException erro) {
           System.out.printf("Erro: %s", erro.getMessage());
       }
+     
+  
     }
     
     // desserialização: recuperando os objetos gravados no arquivo binário "nomeArq"
-    public static List<Professor> lerArquivoBinario(String nomeArq) {
-      //List<Professor> listadeprofessor = new ArrayList<>();
+    public static void lerArquivoBinario(String nomeArq) {
+    System.out.println("Recuperando objeto: ");
+    try
+    {
+      //Carrega o arquivo
+      FileInputStream arquivoLeitura = new FileInputStream(nomeArq);
+      // Classe responsavel por recuperar os objetos do arquivo
+      ObjectInputStream objLeitura =
+      new ObjectInputStream(arquivoLeitura);
+      System.out.println(objLeitura.readObject());
+      objLeitura.close();
+      arquivoLeitura.close();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+    
       
-      try {
-        File arq = new File(nomeArq);
-        if (arq.exists()) {
-           ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-           listadeprofessor = (List<Professor>)objInput.readObject();
-           objInput.close();
-        }
-      } catch(IOException erro1) {
-          System.out.printf("Erro: %s", erro1.getMessage());
-      } catch(ClassNotFoundException erro2) {
-          System.out.printf("Erro: %s", erro2.getMessage());
-      }
-
-      return listadeprofessor;
     }
 }

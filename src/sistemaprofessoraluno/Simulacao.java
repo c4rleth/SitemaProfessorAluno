@@ -27,23 +27,20 @@ public class Simulacao {
         
         
         //Ler arquivo
-        /*
-        Cadastro.lerArquivoBinario("nomeArq.dat");
+        Cadastro.lerArquivoBinario("nomeArq");
         
         int i = 1;
         for (Professor p: Cadastro.listadeprofessor) {
         System.out.printf("Ficha nº....: %d.\n", i++);
        
         System.out.printf("Nome.........: %s\n", ((Professor)p).getNome());
-        System.out.printf("Matricula: %d kgs\n", ((Professor)p).getMatricula());
-        System.out.printf("Carga Horaria.......: %d metros\n", ((Professor)p).getCargaHoraria());
+        System.out.printf("Matricula: %d \n", ((Professor)p).getMatricula());
+        System.out.printf("Carga Horaria.......: %d \n", ((Professor)p).getCargaHoraria());
         System.out.printf("Salario..........: %.2f\n", ((Professor)p).getSalario());
+        System.out.printf("Salario por hora..........: %.2f\n", ((ProfHorista)p).getSalarioHora());
         
       }
-    */
-        
-        
-        //System.out.println(profhorista.getNome()); 
+
         
         // Cenário 01: A ideia é criar e utilizar exceções
         // Crie alguns objetos ProfDE, alguns objetos ProfHorista e um objeto Cadastro

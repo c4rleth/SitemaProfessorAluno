@@ -10,18 +10,38 @@ public class Simulacao {
 
     public static void main(String args[]) {
         
+        
         ProfHorista profhorista = new ProfHorista("", 001, -1, 2097);
         //profhorista.setCargaHoraria(-1);
         ProfHorista profhorista02 = new ProfHorista("Icaro", 002, 28, 1200);
         ProfDE profde = new ProfDE("Fedegosa", 002, 13);
         
         Cadastro cadastrar = new Cadastro(1);
-        cadastrar.insere(profhorista, 0);
+        cadastrar.insere(profhorista02, 0);
         //cadastrar.insere(profhorista02, 1);
-        cadastrar.consulta("");
+        cadastrar.consulta("Icaro");
         //cadastrar.remove("Icaro");
         //cadastrar.consulta("Icaro");
         //cadastrar.get(1);
+        Cadastro.gravarArquivoBinario(Cadastro.listadeprofessor, "nomeArq");
+        
+        
+        //Ler arquivo
+        /*
+        Cadastro.lerArquivoBinario("nomeArq.dat");
+        
+        int i = 1;
+        for (Professor p: Cadastro.listadeprofessor) {
+        System.out.printf("Ficha nº....: %d.\n", i++);
+       
+        System.out.printf("Nome.........: %s\n", ((Professor)p).getNome());
+        System.out.printf("Matricula: %d kgs\n", ((Professor)p).getMatricula());
+        System.out.printf("Carga Horaria.......: %d metros\n", ((Professor)p).getCargaHoraria());
+        System.out.printf("Salario..........: %.2f\n", ((Professor)p).getSalario());
+        
+      }
+    */
+        
         
         //System.out.println(profhorista.getNome()); 
         

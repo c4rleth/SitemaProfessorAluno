@@ -1,6 +1,8 @@
 package sistemaprofessoraluno;
 
-public abstract class Professor {
+import java.io.Serializable;
+
+public abstract class Professor implements Serializable{
     protected String nome;
     protected int matricula;
     protected int cargaHoraria;

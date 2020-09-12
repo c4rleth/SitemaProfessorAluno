@@ -8,11 +8,11 @@ package sistemaprofessoraluno;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.List;
+import java.io.*;
 
 public class Cadastro {
     //private List array = null;
-    List<Professor> listadeprofessor;
+    static List<Professor> listadeprofessor;
 
     // Construtor recebe o tamanho inicial do cadastro
     public Cadastro(int capacidade) {
@@ -103,5 +103,41 @@ public class Cadastro {
             System.out.println("Erro: " + e);
             return null;
         }      
-    }      
+    } 
+    
+    // serialização: gravando o objetos no arquivo binário "nomeArq"
+    public static void gravarArquivoBinario(List<Professor> listadeprofessor, String nomeArq) {
+      File arq = new File(nomeArq);
+      try {
+        arq.delete();
+        arq.createNewFile();
+
+        ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
+        objOutput.writeObject(listadeprofessor);
+        objOutput.close();
+
+      } catch(IOException erro) {
+          System.out.printf("Erro: %s", erro.getMessage());
+      }
+    }
+    
+    // desserialização: recuperando os objetos gravados no arquivo binário "nomeArq"
+    public static List<Professor> lerArquivoBinario(String nomeArq) {
+      //List<Professor> listadeprofessor = new ArrayList<>();
+      
+      try {
+        File arq = new File(nomeArq);
+        if (arq.exists()) {
+           ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
+           listadeprofessor = (List<Professor>)objInput.readObject();
+           objInput.close();
+        }
+      } catch(IOException erro1) {
+          System.out.printf("Erro: %s", erro1.getMessage());
+      } catch(ClassNotFoundException erro2) {
+          System.out.printf("Erro: %s", erro2.getMessage());
+      }
+
+      return listadeprofessor;
+    }
 }
